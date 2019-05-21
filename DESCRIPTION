@@ -1,0 +1,22 @@
+Package: abmisc
+Title: Shortcuts for common data tasks.
+Version: 0.0.0.9000
+Authors@R: 
+    c(
+    person(given = "Andrew",
+           family = "Ballard",
+           role = c("aut","cre"),
+           email = "aballard@american.edu"),
+    person(given = "Shahryar",
+           family = "Minhas",
+           role = c("aut"),
+           email = "s7.minhas@gmail.com")
+           )
+Description: This package provides shortcuts for commonly used data tasks. 
+    Some, such as num(), are wrappers for other functions.
+License: 
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    tidyverse
+RoxygenNote: 6.1.1
