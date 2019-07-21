@@ -91,3 +91,13 @@ d <- function(x){
     dim(x)
   }
 }
+
+#' Change column names of a dataframe to lowercase
+#'
+#' Allows this operation to be done in a magrittr chain
+#' @param df An input dataframe whose column names will be pushed to lowercase
+#' @return Returns the input dataframe, but with the names in lower case
+namesLower <- function(df){
+  names(df) <- tolower(names(df))
+  return(df)
+}
