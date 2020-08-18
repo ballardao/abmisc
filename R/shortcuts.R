@@ -3,8 +3,8 @@
 #' This is a wrapper for \code{as.character()}.
 #' @param x A vector
 #' @return The object \code{x} coerced to an object of type "character".
-#' @examples
 #' @export
+#' @examples
 #' char(c(1, 2, 3))
 char <- function(x){ as.character(x) }
 
@@ -13,8 +13,8 @@ char <- function(x){ as.character(x) }
 #' This is a wrapper for \code{as.numeric()}.
 #' @param x A vector
 #' @return The object \code{x} coerced to an object of type "numeric".
-#' @examples
 #' @export
+#' @examples
 #' num(c(1, 2, 3))
 num <- function(x){ as.numeric(char(x)) }
 
