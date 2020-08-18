@@ -37,7 +37,7 @@ medNA <- function(x){ median(x, na.rm=TRUE) }
 #' @param string Input vector. either a character vector or something coercible to one.
 #' @param pattern Pattern to look for.
 #' @return A vector of the same type as \code{string}, but without any elements in which \code{pattern} was detected.
-str_remove <- function(string, pattern){string[!str_detect(string, pattern)]}
+str_delete <- function(string, pattern){string[!str_detect(string, pattern)]}
 
 #' Common column names
 #'
@@ -60,14 +60,14 @@ even <- function(x){ x %% 2 == 0 }
 #' @param x An \code{R} object.
 #' @param unit A string containing the units to be used. Defaults to "Mb". See \code{?object.size} for more options.
 #' @return An estimate of the size of the object in the units specified by \code{unit}. Estimates are not always accurate, see \code{?object.size} for details.
-size <- function(x, unit = 'Mb'){ object.size(x) %>% print(., units = unit)}
+size <- function(x, unit = 'Mb'){ print(object.size(x), units = unit)}
 
 #' NA elements
 #'
 #' Counts the number of NA values in a vector.
 #' @param x An input vector.
 #' @return A length-one integer object displaying the number of NAs in \code{x}.
-nas <- function(x){is.na(x) %>% which() %>% length()}
+nas <- function(x){length(which(is.na(x)))}
 
 #' Variable classes
 #'
@@ -82,10 +82,10 @@ classes <- function(df){sapply(names(df), function(name){class(df[,name])})}
 #' @param x An input object whose dimensions will be computed.
 #' @return Returns a length-\code{n} integer vector where \code{n} is the number of dimensions in \code{x} (e.g. \code{n=1} for atomic vectors and lists, \code{n=2} for matrices and dataframes, and \code{n} may be more than 2 for some arrays). Each element in the output is the number of elements in that dimension of \code{x} (e.g. if \code{n=1}, the number of elements in the list or vector, if \code{n=2}, first the number of rows in the dataframe or matrix, then the number of columns).
 d <- function(x){
-  if(!is.vector(x) & !is.matrix(x) & !is.data.frame(x) & !'Date' %in% class(x)){
+  if(!is.vector(x) & !is.factor(x) & !is.matrix(x) & !is.data.frame(x) & !'Date' %in% class(x)){
     stop('Requires data frame, matrix, list, array, or vector!')
   }
-  if(is.vector(x) | 'Date' %in% class(x)){
+  if(is.vector(x) | is.factor(x) | 'Date' %in% class(x)){
     length(x)
   } else {
     dim(x)
