@@ -113,3 +113,14 @@ namesLower <- function(df){
   names(df) <- tolower(names(df))
   return(df)
 }
+
+#' Load .rdata files and assign them to an object of your choosing
+#'
+#' This allows you to read files with `load()` without needing to keep the original object name
+#' @param rdata A filepath to a file to be read with `load()`
+#' @return An R object or objects read in with `load()`, without the original object names attached
+#' @export
+assignLoad <- function(rdata){
+  load(rdata)
+  return(get(ls()[ls() != 'rdata']))
+}
