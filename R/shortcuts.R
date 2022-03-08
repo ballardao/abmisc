@@ -18,6 +18,17 @@ char <- function(x){ as.character(x) }
 #' num(c(1, 2, 3))
 num <- function(x){ as.numeric(char(x)) }
 
+#' Tibble Head
+#'
+#' This is a wrapper for \code{head()}.
+#' @param x A dataframe
+#' @return The first six rows of object \code{x} coerced to an object of type "tbl_df".
+#' @export
+#' @examples
+#' df <- data.frame(x=1:10, y=rnorm(10))
+#' thead(df)
+thead <- function(x){ head(as_tibble(x)) }
+
 #' Standardized variables
 #'
 #' This function standardizes variables by taking the difference between each value and the mean and dividing by the standard deviation.
